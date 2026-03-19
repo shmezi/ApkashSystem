@@ -94,7 +94,7 @@ const ItemSelectionList = ({close, items, tongueColor, originalSelection}: {
     >
         {items.map((item, index) => {
 
-            return <SelectionItem index={index} item={item} items={items} tongueColor={tongueColor} selected={selected}
+            return <SelectionItem key={index} index={index} item={item} items={items} tongueColor={tongueColor} selected={selected}
                                   setSelected={setSelected}/>
         })}
 
