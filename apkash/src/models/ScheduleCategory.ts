@@ -1,8 +1,6 @@
 import mongoose, {Document, Schema} from "mongoose";
 
-/**
- * An entry of a user in a schedule
- */
+
 export interface IScheduleCategory extends Document {
     userId: string,
     scheduleId: string,

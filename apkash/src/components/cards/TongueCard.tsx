@@ -1,30 +1,39 @@
-"use client"
-import {Box, Typography} from "@mui/material"
-import Image from "next/image";
-import {useState} from "react";
-import SelectionItem from "@/components/selection/SelectionItem";
+import {Box, Typography} from "@mui/material";
+import RollerSelector from "@/components/selection/RollerSelector";
 import DailyTongue from "@/components/tongues/day-selector/DailyTongue";
+import Image from "next/image";
+import BaseCard from "@/components/cards/BaseCard";
+
+const TongueCard = ({
+                        children,
+                        iconSrc,
+                        iconText,
+                        mainText,
+                        tongue,
+                        primary
+                    }: {
+    children: React.ReactNode,
+    iconSrc?: string,
+    iconText: string,
+    mainText: string,
+    tongue: string,
+    primary: string
+}) => {
 
 
-const PlanCard = ({tongue, primary}: { tongue: string, primary: string }) => {
-
-
-    return <Box width={"25rem"} height={"10rem"}>
-
+    return <BaseCard>
 
         <Box className={"ic-header"} display="flex" width={"100%"}>
 
-            <Box zIndex={5} alignSelf={"end"} bgcolor={tongue} sx={{borderTopLeftRadius: "4px"}} height={"2rem"}
+            <Box zIndex={5} alignSelf={"end"}
+                 bgcolor={tongue} sx={{borderTopLeftRadius: "4px"}}
+                 height={"2rem"}
                  className={"ic-tongue"}
-                 width={"70%"}
-
+                 maxWidth={"70%"}
                  display={"flex"}
                  flexDirection={"row"} alignItems={"end"}>
-               {/*<SelectionItem tongue={tongue} primary={primary} />*/}
-               {/* <Typography variant={"h6"} color={"white"} display={"flex"} paddingRight={"3px"}*/}
-               {/*             paddingLeft={"4px"}>|</Typography>*/}
-                <DailyTongue tongueColor={tongue}/>
 
+                {children}
             </Box>
             <Box className={"ic-avatar"} zIndex={1} width={"30%"} position={"relative"} sx={{top: "15px"}}>
                 <Image
@@ -33,9 +42,10 @@ const PlanCard = ({tongue, primary}: { tongue: string, primary: string }) => {
                     height={0}
                     alt={"image"}
                     sizes={"100vw"}
-                    src={"/content/people.png"}
+                    src={iconSrc ?? "/content/people.png"}
                     style={{width: "100%", height: "100%"}}
                 />
+
             </Box>
 
 
@@ -43,17 +53,16 @@ const PlanCard = ({tongue, primary}: { tongue: string, primary: string }) => {
         <Box className={"ic-text-content"} bgcolor={primary} display="flex" sx={{borderRadius: "15px 0px 0px 15px "}}>
             <Box className={"ic-descriptiaon"} width={"70%"} display={"flex"} justifyContent={"center"}
                  alignItems={"center"}>
-                <Typography variant={"h4"}>10:00 - 12:00</Typography>
+                <Typography variant={"h4"}>{mainText}</Typography>
             </Box>
             <Box className={"ic-icon"} bgcolor={primary} zIndex={5} border={"black solid 3px"} borderRadius={"15px"}
-              width={"30%"} display={"flex"}
+                 width={"30%"} display={"flex"}
                  justifyContent={"center"} alignItems={"center"}>
-                <Typography variant={"h3"}>10</Typography>
+                <Typography variant={"h3"}>{iconText}</Typography>
+
             </Box>
 
         </Box>
-    </Box>
+    </BaseCard>
 }
-
-
-export default PlanCard
+export default TongueCard;

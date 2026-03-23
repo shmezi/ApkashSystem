@@ -2,7 +2,7 @@
 import {Box, Button, Typography} from "@mui/material";
 import React from "react";
 
-const ItemsList = ({children}: { children?: React.ReactNode }) => {
+const CardsHolder = ({children}: { children?: React.ReactNode }) => {
 
     return <Box
         height={"95%"}
@@ -42,4 +42,4 @@ const ItemsList = ({children}: { children?: React.ReactNode }) => {
 
     </Box>
 }
-export default ItemsList;
+export default CardsHolder;
